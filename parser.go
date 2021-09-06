@@ -1522,6 +1522,11 @@ func (parser *Parser) parseFile(packageDir, path string, src interface{}) error 
 		return nil
 	}
 
+	vendorIndex := strings.Index(packageDir, "vendor")
+	if vendorIndex >= 0 {
+		packageDir = packageDir[vendorIndex+len("vendor/"):]
+	}
+
 	// positions are relative to FileSet
 	astFile, err := goparser.ParseFile(token.NewFileSet(), path, src, goparser.ParseComments)
 	if err != nil {

@@ -255,6 +255,11 @@ func (pkgs *PackagesDefinitions) FindTypeSpec(typeName string, file *ast.File) *
 		}
 
 		return pkgs.findTypeSpec(pkgPath, parts[1])
+		// found := pkgs.findTypeSpec(pkgPath, parts[1])
+		// if found == nil {
+		// 	return pkgs.uniqueDefinitions[typeName]
+		// }
+		// return found
 	}
 
 	typeDef, ok := pkgs.uniqueDefinitions[fullTypeName(file.Name.Name, typeName)]
